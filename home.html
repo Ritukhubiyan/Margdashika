@@ -1,0 +1,119 @@
+<!DOCTYPE html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margdarshika One plateform to travel</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <body style="background-image: url('background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+
+    <header>     
+        <div class="container">
+            <!-- Add this section somewhere in your HTML, like in the <main> section -->
+<div id="cartContainer" class="cart-container"></div>
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="home.html"><img src=" .png" alt="Logo" ></a>           
+                <a href="home.html">Home</a>
+                <a href="place.html">Places</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="Booking.html">Booking</a>
+                        <a href="Transportation.html">Transportation</a>
+                        <a href="Tours and Activities.html">Tours and Activities</a>
+                        <a href="Travel Planning.html">Travel Planning</a>
+                        <!-- <a href="Dining and Connectivity.html">Dining and Connectivity</a>
+                        <a href="Currency and Payments.html">Currency and Payments</a>
+                        <a href="Safety Services.html">Safety Services</a>
+                        <a href="Language Tools.html">Language Tools</a>
+                        <a href="Sustainable Travel.html">Sustainable Travel</a>
+                        <a href="Advanced Features.html">Advanced Features</a> -->
+                    </div>
+                </div>               
+            </div>
+            <div class="navbar-right">
+                <button id="loginBtn">Login</button>||<button id="signupBtn">Signup</button>
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closeLoginBtn">&times;</span>
+                <div class="popup-form">
+                    <h2>Login</h2>
+                    <form>
+                        <label for="login-username">Username:</label>
+                        <input type="text" id="login-username" name="username" required>
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" name="password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Popup -->
+    <div id="signupPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closeSignupBtn">&times;</span>
+                <div class="popup-form">
+                    <h2>Signup</h2>
+                    <form>
+                        <label for="signup-username">Username:</label>
+                        <input type="text" id="signup-username" name="username" required>
+                        <label for="signup-email">Email:</label>
+                        <input type="email" id="signup-email" name="email" required>
+                        <label for="signup-password">Password:</label>
+                        <input type="password" id="signup-password" name="password" required>
+                        <label for="signup-confirm-password">Confirm Password:</label>
+                        <input type="password" id="signup-confirm-password" name="confirm-password" required>
+                        <button type="submit">Signup</button>
+                    </form>
+                    <p>Already have an account? <a href="#" id="switchToLogin">Log in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>      
+            </div>
+        </div>
+    </header>
+    
+   <!-- Main Content Section -->
+   <main>
+    <div class="welcome-section">
+      <h1>Margdarshika</h1>
+      <h3>Appke Raste ka Sathi</h3>
+      <p>The impact and benefits of India's tourism industry are vast, contributing to multiple facets of the country's economy and development.</p>
+      <p>Introducing Margdarshika, the ultimate integrated app and website platform designed to revolutionize your travel experience. Seamlessly combining flight and hotel bookings, local transportation, and personalized itineraries, Margdarshika ensures every aspect of your journey is smooth and enjoyable. Explore guided tours, local experiences, and exclusive deals, all while staying connected with Wi-Fi hotspots and local SIM cards. Our platform also supports sustainable travel with eco-friendly options and real-time alerts for weather and safety. From luxury getaways to remote work solutions, Margdarshika caters to every traveler's needs, making it your all-in-one travel companion. Discover the world with ease and confidence.</p>
+</main>
+    
+<!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-left">
+            <p>&copy; 2024 Margdarshika. All rights reserved.</p>
+        </div>
+        <div class="footer-center">
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>|
+            <a href="about.html">About us</a>
+        </div>
+        <div class="footer-right">
+            <footer class="footer">
+            <p>Follow Us</p>
+            <div class="social-icons">
+                <a href="">
+                    <img src="insta icon.png">
+                </a> 
+            <a href="">
+                <img src="linkedin icon.png">
+            </a>
+        </div>
+    </div>
+</footer>
+    <script src="home.js"></script>
+</body>
+</html>

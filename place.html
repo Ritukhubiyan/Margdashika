@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margdarshika One plateform to travel</title>
+    <style>
+        /* Global Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #00c4b3;
+        }
+
+        /*  for login and signup page style */
+
+button {
+    background-color: #000000;
+    color: white;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 0;
+    border: 1px solid #089c7c;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(1, 165, 151, 0.3);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.close-btn {
+    color: #029664;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: rgb(158, 32, 32);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-inner {
+    display: flex;
+    width: 100%;
+}
+
+.popup-form {
+    flex: 1;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    border: 2px solid #4CAF50;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+
+form button:hover {
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+}
+    
+button {
+    background-color: #000000;
+    color: white;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+        /* for navigation bar editing */
+        .navbar {
+            display: flex;
+            padding: 8px 20px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #020a09;
+            color: rgb(201, 201, 201);
+            height: 13mm;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-left .logo {
+            height: 40px;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: rgba(255, 255, 255, 0.863);
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+
+        .navbar a:hover {
+            background-color: #4CAF50;
+            color: black;
+        }
+
+        .navbar-right a {
+            padding: 0 10px;
+        }
+
+        /* for dropdown menu setting */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #4CAF50;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Product Grid Section */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #050e07;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product img {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+            cursor: zoom-in;
+        }
+
+        .product-info h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product-info button {
+            padding: 10px 15px;
+            background-color: #06a57d;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+/* Popup Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.986); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 0;
+    border: 1px solid #089c7c;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(1, 165, 151, 0.3);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.close-btn {
+    color: #029664;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-inner {
+    display: flex;
+    width: 100%;
+}
+
+.popup-form {
+    flex: 1;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #4553a0;
+}
+
+
+    </style>
+</head>
+<body>
+    <body style="background-image: url('background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+
+    <header>     
+        <div class="container">
+            <!-- Add this section somewhere in your HTML, like in the <main> section -->
+<div id="cartContainer" class="cart-container"></div>
+        <div class="navbar">
+            <div class="navbar-left">
+                <a href="home.html"><img src="Margdarshika.png" alt="Logo" ></a>           
+                <a href="home.html">Home</a>
+                <a href="place.html">Places</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="Booking.html">Booking</a>
+                        <a href="Transportation.html">Transportation</a>
+                        <a href="Tours and Activities.html">Tours and Activities</a>
+                        <a href="Travel Planning.html">Travel Planning</a>
+                        <!-- <a href="Dining and Connectivity.html">Dining and Connectivity</a>
+                        <a href="Currency and Payments.html">Currency and Payments</a>
+                        <a href="Safety Services.html">Safety Services</a>
+                        <a href="Language Tools.html">Language Tools</a>
+                        <a href="Sustainable Travel.html">Sustainable Travel</a>
+                        <a href="Advanced Features.html">Advanced Features</a> -->
+                    </div>
+                </div>               
+            </div>
+            <div class="navbar-right">
+                <button id="loginBtn">Login</button>||<button id="signupBtn">Signup</button>
+    <!-- Login Popup -->
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closeLoginBtn">&times;</span>
+                <div class="popup-form">
+                    <h2>Login</h2>
+                    <form>
+                        <label for="login-username">Username:</label>
+                        <input type="text" id="login-username" name="username" required>
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" name="password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign up here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Popup -->
+    <div id="signupPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closeSignupBtn">&times;</span>
+                <div class="popup-form">
+                    <h2>Signup</h2>
+                    <form>
+                        <label for="signup-username">Username:</label>
+                        <input type="text" id="signup-username" name="username" required>
+                        <label for="signup-email">Email:</label>
+                        <input type="email" id="signup-email" name="email" required>
+                        <label for="signup-password">Password:</label>
+                        <input type="password" id="signup-password" name="password" required>
+                        <label for="signup-confirm-password">Confirm Password:</label>
+                        <input type="password" id="signup-confirm-password" name="confirm-password" required>
+                        <button type="submit">Signup</button>
+                    </form>
+                    <p>Already have an account? <a href="#" id="switchToLogin">Log in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>      
+            </div>
+        </div>
+    </header>
+  
+    <!-- Search Bar -->
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for medicines...">
+            <button onclick="search()">Search</button>
+        </div>
+
+        <!-- Product Grid Section -->
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product">
+                <div class="magnifier-container">
+                    <img src="udaipur.jpeg" alt="placeimage" id="placeimage1">
+                </div>
+                <div class="product-info">
+                    <a href="Udaipur.html"><h2>Udaipur</h2></a>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <div class="container">
+                    <img src="manali.jpeg" alt="placeimage" id="placeimage2">
+                </div>
+                <div class="product-info">
+                    <a href="Manali.html"><h2>Manali</h2></a>
+                </div>
+            </div>
+
+             <!-- Product 3 -->
+             <div class="product">
+                <div class="container">
+                    <img src="agr.jpeg" alt="placeimage" id="placeimage3">
+                </div>
+                <div class="product-info">
+                    <a href="Agra.html"><h2>Agra</h2></a>
+                </div>
+            </div>
+
+
+             <!-- Product 4 -->
+             <div class="product">
+                <div class="container">
+                    <img src="bnar.jpeg" alt="placeimage" id="placeimage4">
+                </div>
+                <div class="product-info">
+                    <a href="banaras.html"><h2>Banaras</h2></a>
+                </div>
+            </div>
+            </div>
+            </div>
+    <script>
+        
+        // Search functionality placeholder
+        function search() {
+            const searchInput = document.getElementById('searchInput').value;
+            alert("Searching for: " + searchInput);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+    // Login popup elements
+    const loginBtn = document.getElementById('loginBtn');
+    const loginPopup = document.getElementById('loginPopup');
+    const closeLoginBtn = document.getElementById('closeLoginBtn');
+    const switchToSignup = document.getElementById('switchToSignup');
+
+    // Signup popup elements
+    const signupBtn = document.getElementById('signupBtn');
+    const signupPopup = document.getElementById('signupPopup');
+    const closeSignupBtn = document.getElementById('closeSignupBtn');
+    const switchToLogin = document.getElementById('switchToLogin');
+
+    // Show login popup
+    loginBtn.addEventListener('click', function() {
+        loginPopup.style.display = 'block';
+    });
+
+    // Close login popup
+    closeLoginBtn.addEventListener('click', function() {
+        loginPopup.style.display = 'none';
+    });
+
+    // Switch to signup popup from login popup
+    switchToSignup.addEventListener('click', function() {
+        loginPopup.style.display = 'none';
+        signupPopup.style.display = 'block';
+    });
+
+    // Show signup popup
+    signupBtn.addEventListener('click', function() {
+        signupPopup.style.display = 'block';
+    });
+
+    // Close signup popup
+    closeSignupBtn.addEventListener('click', function() {
+        signupPopup.style.display = 'none';
+    });
+
+    // Switch to login popup from signup popup
+    switchToLogin.addEventListener('click', function() {
+        signupPopup.style.display = 'none';
+        loginPopup.style.display = 'block';
+    });
+
+    // Close popups when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target == loginPopup) {
+            loginPopup.style.display = 'none';
+        }
+        if (event.target == signupPopup) {
+            signupPopup.style.display = 'none';
+        }
+    });
+});
+    </script>
+    
+</body>
+</html>
